@@ -41,7 +41,8 @@ hexo new page categories
 将 source/categories/index.md 的内容修改为如下：
 ```
 ---
-date: 2020-05-21 22:47:09
+title: 分类
+date: 2020-05-21 22:00:00
 type: "categories"
 comments: false
 ---
@@ -53,7 +54,8 @@ hexo new page tags
 将 source/tags/index.md 的内容修改为如下：
 ```
 ---
-date: 2020-05-21 22:47:09
+title: 标签
+date: 2020-05-21 22:00:00
 type: "tags"
 comments: false
 ---
@@ -67,7 +69,7 @@ hexo new page about
 ---
 title: 关于我
 type: "about"
-date: 2020-05-21 22:47:09
+date: 2020-05-21 22:00:00
 comments: false
 ---
 
