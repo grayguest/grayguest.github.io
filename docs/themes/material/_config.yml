@@ -7,14 +7,26 @@ menu:
     url: archives
     intro: ""
     icon: "fa fa-list"
+  # - title: 工具
+  #   url: tools
+  #   intro: "项目集"
+  #   icon: "fa fa-th-large"
+  # - title: 分类
+  #   url: categories
+  #   intro: "所有分类"
+  #   icon: "fa fa-folder"
+  # - title: 标签
+  #   url: tags
+  #   info: "所有标签"
+  #   icon: "fa fa-tags"
   - title: 关于
     url: about
-    intro: ""
+    intro: "简介"
     icon: "fa fa-info-circle"
-  - title: RSS
-    url: atom.xml
-    intro: "这是一个订阅源"
-    icon: "fa fa-rss"
+  # - title: RSS
+  #   url: atom.xml
+  #   intro: "这是一个订阅源"
+  #   icon: "fa fa-rss"
 
 links:
   - title: "GitHub"
@@ -43,5 +55,5 @@ widgets:
 rss:
 favicon: favicon.ico
 google_analytics:
-# baidu_analytics: 392796d51567e848aebf813b65cb8656
+baidu_analytics: 
 footer: ""

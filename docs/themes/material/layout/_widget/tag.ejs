@@ -1,8 +1,12 @@
 <% if (site.tags.length){ %>
-  <div class="widget-wrap">
-    <h3 class="widget-title"><%= __('tags') %></h3>
-    <div class="widget">
-      <%- list_tags({show_count: theme.show_count}) %>
-    </div>
+  <div class="widget">
+    <h4><%= __('tags') %></h4>
+    <ul class="blogroll list-unstyled">
+      <% site.tags.each(function(tag){ %>
+        <li>
+          <a href="<%= config.root %><%= tag.path %>" > <i class="mdi-action-label-outline"></i><%= tag.name%></a>
+        </li>
+      <% }); %>
+    </ul>
   </div>
 <% } %>
