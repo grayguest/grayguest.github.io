@@ -101,3 +101,7 @@ deploy:
   type: 'git'
   repo: git@github.com:grayguest/grayguest.github.io.git
   branch: master
+
+# 性能优化
+## 文件压缩
+all_minifier: true

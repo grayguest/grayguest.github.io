@@ -85,9 +85,10 @@ comments: false
 <link rel="manifest" href="/site.webmanifest">
 ```
 修改/home/xiaopo/grayguest.github.io/docs/themes/material/layout/_partial/head.ejs中的内容符合上面的引入方式即可
-![image-20200522002421022](/data/typora_assets/hexo主题配置与修改/image-20200522002421022.png)
+![data-typora_assets-hexo主题配置与修改-image-20200522002421022.png](https://i.loli.net/2020/05/22/gxry7fCeE1PaFdW.png)
 
 ### 修改颜色
+目前没找到方法
 
 ### 修改More...
 article.ejs，修改如下代码：
@@ -98,10 +99,39 @@ article.ejs，修改如下代码：
 ```ejs
 <a class="article-more-a" href="<%- url_for(post.path) %>"> 阅读更多... </a>
 ```
-### 增加文章分类
-
+### 增加分类
+前面已经通过```hexo new page categories```生成分类页面，拷贝landscape主题的layout/category.ejs到material主题的同级目录，拷贝landscape主题的layout/\_partial/post文件夹到material主题的同级目录，编辑material主题layout/\_widget\category.ejs
+```ejs
+<% if (site.categories.length){ %>
+	<div class="widget">
+		<h4><%= __('categories') %></h4>
+		<ul class="tag_box inline list-unstyled">
+		<% site.categories.sort('name').each(function(item){ %>
+			<li>
+            <a href="<%- config.root %><%- item.path %>"><i class="mdi-content-sort"></i><%= item.name %></a>
+            </li>
+		<% }); %>
+		</ul>
+	</div>
+<% } %>
+```
 ### 增加标签
+前面已经通过```hexo new page tags```生成标签页面，拷贝landscape主题的layout/tag.ejs到material主题的同级目录，编辑material主题layout/\_widget\tag.ejs
+```ejs
+<% if (site.tags.length){ %>
+  <div class="widget">
+    <h4><%= __('tags') %></h4>
+    <ul class="blogroll list-unstyled">
+      <% site.tags.each(function(tag){ %>
+        <li>
+          <a href="<%= config.root %><%= tag.path %>" > <i class="mdi-action-label-outline"></i><%= tag.name%></a>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+<% } %>
 
+```
 ## 缺陷
 
 - markdown中使用一号标题#的文章，无法显示在hexo生成的文章结构中
