@@ -41,6 +41,15 @@
 					<div class="article-content">
 						<%- page.content %>
 					</div>
+					
+					<% if (page.path != 'about/index.html' && theme.copyright.enable){ %>
+					<%- partial('copyright') %>
+					<% } %>
+
+					<!-- <% if (theme.donate.enable){ %>
+					<%- partial('donate') %>
+					<% } %> -->
+
 
 			  <!-- about -->
 			  <% } else if( pageType == 'about') {%>

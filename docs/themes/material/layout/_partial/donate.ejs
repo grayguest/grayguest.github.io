@@ -1,0 +1,87 @@
+<% if (theme.donate) { %>
+    <!-- css -->
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+      .donate_bar a.btn_donate{
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        /* background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+        _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat; */
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+      }
+      .post .post-reward .reward-button {
+        margin: 15px 0;
+        padding: 3px 7px;
+        display: inline-block;
+        color: #c05b4d;
+        border: 1px solid #c05b4d;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+  
+      .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+      .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+      }
+      .bold{ font-weight: bold; }
+    </style>
+    <!-- /css -->
+  
+      <!-- Donate Module -->
+      <div id="donate_module">
+  
+    <!-- btn_donate & tips -->
+    <div id="donate_board" class="donate_bar center">
+      <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏">打赏儿</a>
+    </div>
+    <!-- /btn_donate & tips -->
+  
+    <!-- donate guide -->
+      
+    <div id="donate_guide" class="donate_bar center hidden">
+      <a href="<%= theme.donate.wechat %>" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+        <img src="<%= theme.donate.wechat %>" title="微信打赏 Colin" height="190px" width="auto"/>
+      </a>
+          &nbsp;&nbsp;
+      <a href="<%= theme.donate.alipay %>" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+        <img src="<%= theme.donate.alipay %>" title="支付宝打赏 Colin" height="190px" width="auto"/>
+      </a>
+  
+    </div>
+    <!-- /donate guide -->
+  
+    <!-- donate script -->
+    <script type="text/javascript">
+      document.getElementById('btn_donate').onclick = function() {
+        $('#donate_guide').removeClass('hidden');
+      }
+  
+      function donate_on_web(){
+        $('#donate').submit();
+          }
+  
+      var original_window_onload = window.onload;
+          window.onload = function () {
+              if (original_window_onload) {
+                  original_window_onload();
+              }
+              document.getElementById('donate_board_wdg').className = 'hidden';
+      }
+    </script>
+    <!-- /donate script -->
+  </div>
+  <!-- /Donate Module -->
+     <% } %>

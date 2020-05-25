@@ -1,6 +1,6 @@
 menu:
   - title: 首页
-    url:
+    url: 
     intro: ""
     icon: "fa fa-home"
   - title: 归档
@@ -57,3 +57,14 @@ favicon: favicon.ico
 google_analytics:
 baidu_analytics: 
 footer: ""
+
+#版权信息
+copyright:
+  enable: true
+
+#打赏
+donate:
+  enable: true
+  text: Enjoy it? Donate me! 赞赏支持！
+  wechat: http://7xkc7a.com1.z0.glb.clouddn.com/wechatImage.png
+  alipay: http://7xkc7a.com1.z0.glb.clouddn.com/alipayImage.png

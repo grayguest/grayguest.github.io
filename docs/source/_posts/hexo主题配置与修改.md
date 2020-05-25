@@ -88,7 +88,7 @@ comments: false
 ![data-typora_assets-hexo主题配置与修改-image-20200522002421022.png](https://i.loli.net/2020/05/22/gxry7fCeE1PaFdW.png)
 
 ### 修改颜色
-目前没找到方法
+全局修改，目前没找到方法。
 
 ### 修改More...
 article.ejs，修改如下代码：
@@ -132,10 +132,89 @@ article.ejs，修改如下代码：
 <% } %>
 
 ```
+### 增加版权说明
+article.ejs文件的post部分增加，
+```ejs
+					<% if (page.path != 'about/index.html' && theme.copyright.enable){ %>
+					<%- partial('copyright') %>
+					<% } %>
+```
+发现about部分也会显示版权说明，about处的pageType竟然是post？？？
+
+增加主题layout/\_partial/copyright.ejs文件
+
+```ejs
+<style type="text/css">
+.page-copyright {
+    margin: 2em 0 0;
+    padding: 0.5em 1em;
+    border-left: 3px solid #FF1700;
+    background-color: #F9F9F9;
+    list-style: none;
+}
+
+.page-copyright li {
+    line-height: 30px;
+}
+</style>
+<div>
+    <ul class="page-copyright">
+      <li class="page-copyright-author">
+      <strong><%= __('copyright.author') %> </strong><%= config.author%></a>
+      </li>
+      <li class="page-copyright-link">
+      <strong><%= __('copyright.link') %> </strong>
+      <a href="<%- config.root %><%- page.path %>" target="_blank" title="<%= page.title %>"><%- config.url %>/<%- page.path %></a>
+      </li>
+      <li class="page-copyright-license">
+        <strong><%= __('copyright.license_title') %>  </strong>
+        <%= __('copyright.left_license_content') %><a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+        <%= __('copyright.right_license_content') %>
+      </li>
+    </ul>
+  <div>
+
+```
+主题\_config.yml文件增加，
+```
+#版权信息
+copyright:
+    enable: true
+```
+zh-CN.yml语言包增加，
+```
+copyright:
+    author: "作者: "
+    link: "文章链接: "
+    license_title: "版权声明: "
+    left_license_content: "本网站所有文章除特别声明外，均采用"
+    right_license_content: "许可协议，转载请注明出处！"
+```
+### 增加打赏
+article.ejs文件的post部分增加，
+```ejs
+					<% if (page.path != 'about/index.html' && theme.donate.enable){ %>
+					<%- partial('donate') %>
+					<% } %>
+```
+主题\_config.yml文件增加，
+```
+#打赏
+donate:
+  enable: true
+  text: Enjoy it? Donate me! 赞赏支持！
+  wechat: 
+  alipay: 
+```
+这部分暂时不需要，不再细写。
+
 ## 缺陷
 
 - markdown中使用一号标题#的文章，无法显示在hexo生成的文章结构中
 - markdown中标题前面最好空一行，否则在hexo生成的文章中容易排版发生错位和其他问题。
+
+## TODO
+- 读hexo主题相关文档细节，更好的自定义主题。
 
 ## 参考链接
 
@@ -143,3 +222,4 @@ article.ejs，修改如下代码：
 - https://www.jianshu.com/p/33bc0a0a6e90
 - https://juejin.im/post/5be145a86fb9a049d7472623
 - https://cloud.tencent.com/developer/article/1440353
+- https://juejin.im/post/5d728f506fb9a06aef090e47
