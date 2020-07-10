@@ -1,3 +1,14 @@
+---
+title: php session反序列化漏洞
+date: 2020-07-10 15:55:09
+toc: true
+categories: php安全
+tags:  
+---
+
+php session在服务端是需要存储的，存储介质一般是file，存储就会涉及到序列化/反序列化，当序列化/反序列化处理器混用的情况就有可能出现问题，特别是在存储时使用php_serialize处理器，读取时使用php处理器，就很有可能会有问题，实际场景并不多，今天作为一种漏洞类型学习一下，大部分都是学习网上的思路，自己实践遇到了一些坑点。
+<!-- more -->
+
 ## 原理
 
 ### php session反序列化的定义
@@ -164,7 +175,7 @@ https://xz.aliyun.com/t/6640#toc-10，panda师傅的这篇文章最后的实例�
 ![/data/typora_assets/php session反序列化踩坑/image-20200710151950385.png](https://i.loli.net/2020/07/10/qi6WfLx28RQv3Ce.png)
 
 ## 防御
-- 统一使用相同的处理器做序列化/反序列化，比如php_serialize
+- 统一使用相同的处理器做序列化/反序列化，比如php_serialize。
 - 当使用php处理器做反序列化时，必须保证不和php_serialize处理器混用。
 
 ## 参考链接
