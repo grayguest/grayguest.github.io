@@ -37,7 +37,8 @@ session_write_close();
 Set it to Off or 0 to see the content of $_SESSION[$key].
 
 ## 复现
-http://web.jarvisoj.com:32784/index.php，复制该题的源码存入session_unserialize.php，它在开头使用了```ini_set('session.serialize_handler', 'php');```而php.ini中session.serialize_handler配置为php_serialize，故可能存在php session反序列化漏洞，而恰好有类OowoO存在eval危险函数，此危险函数同时又在类OowoO的__destruct()中，于是我们使用如下代码构造序列化串以显示文件所在目录
+http://web.jarvisoj.com:32784/index.php ，复制该题的源码存入session_unserialize.php，它在开头使用了```ini_set('session.serialize_handler', 'php');```而php.ini中session.serialize_handler配置为php_serialize，故可能存在php session反序列化漏洞，而恰好有类OowoO存在eval危险函数，此危险函数同时又在类OowoO的__destruct()中，于是我们使用如下代码构造序列化串以显示文件所在目录
+
 ```php
 <?php
 class OowoO
@@ -169,7 +170,7 @@ a:1:{s:19:"upload_progress_123";a:5:{s:10:"start_time";i:1594217096;s:14:"conten
 ```
 
 ## 利用竞态条件来实现session信息的反序列化
-https://xz.aliyun.com/t/6640#toc-10，panda师傅的这篇文章最后的实例，关于“由于请求后，session会立刻被清空覆盖，因此需要不断发送请求，这里可以写脚本，也可以直接利用burp ，我偷个懒直接利用 burp ：”我理解session之所以会被清空是因为session.upload_progress.cleanup为On，按道理它在php文件运行前就已经被清空了，后来得知panda师傅是利用竞态条件来实现的，然后我尝试burp发包1000次也没能写入文件，刚开始不知道可能是什么原因，
+https://xz.aliyun.com/t/6640#toc-10 ，panda师傅的这篇文章最后的实例，关于“由于请求后，session会立刻被清空覆盖，因此需要不断发送请求，这里可以写脚本，也可以直接利用burp ，我偷个懒直接利用 burp ：”我理解session之所以会被清空是因为session.upload_progress.cleanup为On，按道理它在php文件运行前就已经被清空了，后来得知panda师傅是利用竞态条件来实现的，然后我尝试burp发包1000次也没能写入文件，刚开始不知道可能是什么原因，
 ![/data/typora_assets/php session反序列化踩坑/image-20200710104920949.png](https://i.loli.net/2020/07/10/c7MG9LpOYX3kmfz.png)
 后来把burp intruder线程调到50，成功反序列化，另外注意web权限要有写本地文件权限。
 ![/data/typora_assets/php session反序列化踩坑/image-20200710151950385.png](https://i.loli.net/2020/07/10/qi6WfLx28RQv3Ce.png)
