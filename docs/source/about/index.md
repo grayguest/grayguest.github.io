@@ -8,33 +8,48 @@ date: 2020-05-21 19:37:58
 **坚定、锻炼、自律**
 
 ## 个人信息
- - 小破/男/1990/已婚
+ - ~~小~~中破/男/1990/已婚
  - 硕士/东北大学/计算机技术
- - Blog：https://xiaopo.org
- - 兴趣方向：CPPJS流派安全，喜渗透测试，看机会重拾Windows转二进制。
+ - 兴趣方向：CPPJS流派，喜Web安全，志网络安全，不厌二进制。
  - 生活态度：健健康康最重要，平平安安才是福。
  - 座右铭：原理就是实力，实践才出真知。
+ - Blog：https://xiaopo.org
+ - Email：grayguest@pm.me
 
 
 ## 技能清单
-- 工具：Nmap/Awvs/BurpSuite/Sqlmap
-- Web安全：SQLI、XSS、CSRF、SSRF、XXE、LFI、RFI、PHP反序列化等
-- Software：C/VC++(MFC)
-- Web：PHP(Laravel)/Python(Flask)/~~ES6(React)~~
-- 英语：CET-6
+- Web安全：
+  - 熟悉Web安全漏洞，SQLI、XSS、CSRF、SSRF、XXE、LFI、RFI、逻辑漏洞、PHP反序列化等
+  - 熟练使用Web安全测试工具，如Nmap/BurpSuite/Sqlmap/Awvs/W3af等
+- 开发能力
+  - Web：PHP(Laravel)/Python(Flask)/ES5(JQuery)，2年Python开发经验。
+  - Software：C/VC++(MFC)
+  - Database：MySQL/Redis/MongoDB
+- 软实力
+  - 英语：CET-6
 
 ## 工作经历
 
-### 贝壳找房 （ 2018年7月 ~ 2020年5月 ）
+### 贝壳找房北京科技有限公司 （ 2018年7月 ~ 2020年5月 ）
 
 #### 安全测试 
-负责公司新上线及外网系统的web安全测试。
+负责公司新上线及外网系统的web安全测试，首次发现贝壳PC站高危SQL注入。
 
 #### 漏洞审核 
-负责SRC漏洞审核及跟进。
+负责SRC漏洞审核及跟进，漏洞修复率达到86%。
 
 #### 资产扫描
-对公司现有资产接口进行信息整合，形成安全部门自己的ip、domain资产，并利用DNS解析接口感知每日新增外网域名来扩充资产属性；另外集成host、ip、domain、code维度的指纹识别，实现分布式周期扫描。
+一方面对公司现有资产接口进行信息整合，形成安全部门自己的ip、domain资产，并利用DNS解析接口感知每日新增外网域名来扩充资产属性;
+另一方面集成host、ip、domain、code维度的指纹识别，实现分布式周期扫描，并将code指纹识别接入SDL。
+
+### 融七牛信息技术有限公司 （ 2018年1月 ~ 2018年4月 ）
+
+#### 资产扫描
+原始IP资产入库，服务端创建扫描任务，多个扫描客户端读取队列中消息，创建进程并启动，将进程添加到进程管理类中，进程管理类统计存活进程，结束超时进程；用apscheduler模块创建定时器每隔一定时间上传进程信息，能够重新加载客户端配置信息；回传扫描结果到服务端。
+
+## 教育经历
+- 东北大学	      计算机技术  研究生（ 2015年9月 ~ 2018年1月 ）
+- 曲阜师范大学   网络工程      本科    （ 2009年9月 ~ 2013年6月 ）
 
 ## 开源项目和作品
 
@@ -57,9 +72,3 @@ date: 2020-05-21 19:37:58
 
   - 2014架构师大会演讲：[如何通过Docker优化内部开发](http://ftqq.com)
   - 9月公司内部分享：[云计算的前生今世](http://ftqq.com)
-    
-    
-## 联系方式
-
-- Email：grayguest@pm.me
-- QQ：OTYxNDYyMzky
