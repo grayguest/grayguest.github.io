@@ -655,7 +655,8 @@ https://github.com/QAX-A-Team/redis_lua_exploit/issues/1
 https://ricterz.me/posts/2019-07-08-two-tricks-of-redis-exploitation.txt
 
 > If target redis disabled `CONFIG SET`, `SAVE` commands, try to use `EVAL "return redis.call('config', 'set', 'dir', '/root')"`, `BGSAVE`, it only works on Redis 4.x. 
-On Redis 5.x, CONFIG command is a "no-script" command, which means you cannot invoke this command in Redis lua.
+> On Redis 5.x, CONFIG command is a "no-script" command, which means you cannot invoke this command in Redis lua.
+
 其中eval的格式为
 
 ```shell
