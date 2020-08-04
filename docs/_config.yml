@@ -93,7 +93,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: material
+theme: polarbear
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -105,3 +105,9 @@ deploy:
 # 性能优化
 ## 文件压缩
 all_minifier: true
+
+archive_generator:
+    per_page: 0
+    yearly: false
+    monthly: false
+    daily: false
