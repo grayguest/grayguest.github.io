@@ -52,7 +52,10 @@ pre code {
 .highlight pre {
   border: none;
   margin: 0;
-  padding: 0;
+  /* padding: 0; */
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
   white-space: pre;
 }
 
