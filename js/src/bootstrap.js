@@ -1,0 +1,1 @@
+$(document).ready(function(){themeConfig.fancybox.enable&&Theme.fancybox.register(),Theme.backToTop.register()});
