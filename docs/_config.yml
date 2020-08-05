@@ -4,18 +4,26 @@
 
 # Site
 title: 峰焕亭
-subtitle: ''
-description: '健健康康最重要 平平安安才是福'
-keywords: 峰焕亭 xiaopo 小破
+subtitle: xiaopo的个人博客
+description: 健健康康最重要 平平安安才是福
+keywords: 峰焕亭 xiaopo 小破 寒沙胜雪 grayguest
 author: xiaopo
 language: zh-CN
-timezone: ''
+timezone: 
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://xiaopo.org
 root: /
-permalink: :year/:month/:day/:title/
+# permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink.html
+abbrlink:
+  alg: crc32 # 算法：crc16(default) and crc32
+  rep: hex # 进制：dec(default) and hex
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -30,6 +38,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - "plugins/**"
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -44,13 +53,24 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+
+# prettify 插件位置
+# enable 启用和不启用
+# theme 使用prettify高亮主题名称
+prettify:
+  enable: false
+  theme: "prettify"
+# 默认代码高亮插件
 highlight:
   enable: true
+  # _enable: "false" # （BUG?）scss 中只能获取字符串
   line_number: true
-  auto_detect: false
-  tab_replace: ''
+  # auto_detect: false # 这里要注释掉是因为 hexo 自带的 highlight 的 auto_detect 这个属性有 bug ，且之后要被官方抛弃 
+  tab_replace: 
   wrap: true
   hljs: false
+custom_highlight:
+  enable: false
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -98,7 +118,7 @@ theme: material
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: 'git'
+  type: git
   repo: git@github.com:grayguest/grayguest.github.io.git
   branch: master
 

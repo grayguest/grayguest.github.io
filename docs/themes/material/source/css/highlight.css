@@ -47,6 +47,8 @@ pre code {
   background: none;
   text-shadow: none;
   padding: 0;
+  white-space: pre;  /* this code line alone can make code block to slide in Chrome */
+  word-wrap: normal; /* add this line to make code block to slide in Safari */
 }
 
 .highlight pre {

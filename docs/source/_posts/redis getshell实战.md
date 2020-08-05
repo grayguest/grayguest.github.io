@@ -1,9 +1,10 @@
 ---
 title: redis getshell实战
-date: 2020-07-24 22:02:00
 toc: true
 categories: hack_middleware
-tags:  redis
+tags: redis
+abbrlink: eb21dee
+date: 2020-07-24 22:02:00
 ---
 
 ssrf会造成内网漫游，redis作为一种内网常用的中间件易受到攻击，本文主要实践了redis未授权下的攻击和利用，主要从写文件和主从复制RCE两个方面进行了阐述，期间遇到了一些坑，记录下来以飨众人。

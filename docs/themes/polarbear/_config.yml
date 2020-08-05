@@ -6,7 +6,7 @@
 since: 2020
 
 # Custom your favicon.ico in `site/source`
-favicon: favicon.ico
+favicon: /favicon_io/favicon.ico
 
 # Set feed link (false | default | your feed link)
 # false: disable
@@ -17,8 +17,15 @@ rss: default
 # Menu Settings
 # ===========================================
 menu:
-  Archives: /archives
-  About: /about
+  归档: /archives
+  关于: /about
+  订阅: /atom.xml
+
+archive_generator:
+  per_page: 0
+  yearly: true
+  monthly: false
+  daily: false
 
 # ===========================================
 # Widget Settings
@@ -32,10 +39,15 @@ widget:
   Tags: true
   Categories: true
   Custom: false
+  Friends: true
 
 widget_custom:
-    title: Test
-    content: <p>testing...</p>
+  title: Slogan
+  content: <p>Because we can</p>
+
+friend_list:
+  爱黑武: https://bbs.ihei5.com
+  dustyposa: https://dustyposa.github.io
 
 # ===========================================
 # Theme Settings
@@ -60,7 +72,26 @@ duoshuo_shortname:
 # Disqus
 disqus_shortname:
 
+# Gitment
+# Introduction: https://imsun.net/posts/gitment-introduction/
+gitment:
+  enable: false # gitment评论系统开关
+  owner: grayguest # GitHub用户名
+  repo: grayguest.github.io # 存储评论数据的GitHub仓库的仓库名
+  client_id: ca4ae20760cf27ad5c6c # OAuth Application的Client ID
+  client_secret: 671788fb8d6aed08906b70340a8ba3088ec03f39 # OAuth Application的Client Secret
+  lazy: false # 评论懒加载开关
 
+# Gitalk
+# Introduction: https://github.com/gitalk/gitalk
+gitalk:
+  enable: true
+  owner: grayguest # GitHub用户名
+  repo: grayguest.github.io # 存储评论数据的GitHub仓库的仓库名
+  client_id: ca4ae20760cf27ad5c6c # OAuth Application的Client ID
+  client_secret: 671788fb8d6aed08906b70340a8ba3088ec03f39 # OAuth Application的Client Secret
+  admin: ['grayguest']
+  distractionFreeMode: false
 # ===========================================
 # Version
 # ===========================================

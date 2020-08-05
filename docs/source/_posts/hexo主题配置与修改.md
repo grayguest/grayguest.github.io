@@ -1,10 +1,10 @@
 ---
 title: hexo主题配置与修改
-date: 2020-05-21 22:47:09
 toc: true
 categories: web
 tags: hexo
-description: "主要对https://github.com/wayou/hexo-theme-material进行配置和修改" 
+abbrlink: 13920
+date: 2020-05-21 22:47:09
 ---
 最近把博客换到了github pages上面，使用hexo作为静态页面生成的工具，hexo自带主题比较丑，于是搜索自己比较喜欢简洁、小众风格，最后选中了https://github.com/wayou/hexo-theme-material 这个hexo主题，我们需要对这个主题做一些配置和修改，因为这个主题本身不提供文章分类和标签的功能，记录一下摸索的过程。
 <!-- more -->
