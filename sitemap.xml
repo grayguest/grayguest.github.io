@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://xiaopo.org/posts/13920.html</loc>
+    
+    <lastmod>2020-08-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xiaopo.org/posts/24581dd4.html</loc>
+    
+    <lastmod>2020-08-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xiaopo.org/posts/af6e5ddd.html</loc>
+    
+    <lastmod>2020-08-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xiaopo.org/posts/eb21dee.html</loc>
+    
+    <lastmod>2020-08-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xiaopo.org/about/index.html</loc>
+    
+    <lastmod>2020-08-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xiaopo.org/categories/index.html</loc>
+    
+    <lastmod>2020-08-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xiaopo.org/tags/index.html</loc>
+    
+    <lastmod>2020-08-05</lastmod>
+    
+  </url>
+  
+
+  <url>
+    <loc>https://xiaopo.org/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://xiaopo.org/tags/hexo/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaopo.org/tags/redis/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://xiaopo.org/categories/web/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaopo.org/categories/%E6%88%BF%E4%BA%A7/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaopo.org/categories/php%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaopo.org/categories/hack-middleware/</loc>
+    <lastmod>2020-08-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+</urlset>
