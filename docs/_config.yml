@@ -62,15 +62,15 @@ prettify:
   theme: "prettify"
 # 默认代码高亮插件
 highlight:
-  enable: true
+  enable: false
   # _enable: "false" # （BUG?）scss 中只能获取字符串
   line_number: true
   # auto_detect: false # 这里要注释掉是因为 hexo 自带的 highlight 的 auto_detect 这个属性有 bug ，且之后要被官方抛弃 
   tab_replace: 
   wrap: true
   hljs: false
-custom_highlight:
-  enable: false
+highlightjs:
+  enable: true
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -113,7 +113,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: material
+theme: polarbear
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

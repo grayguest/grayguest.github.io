@@ -13,7 +13,7 @@
 {% endif %}
 
 <!--custom_hightlight代码高亮脚本引入-->
-{% if config.custom_highlight.enable %}
+{% if config.highlightjs.enable %}
     <script src="/plugins/highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 {% endif %}

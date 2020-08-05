@@ -42,7 +42,7 @@
   <link href="/plugins/prettify/{{ config.prettify.theme }}.css" rel="stylesheet">
 {% endif %}
 
-{% if config.custom_highlight.enable %}
+{% if config.highlightjs.enable %}
   <link rel="stylesheet" href="/plugins/highlight/styles/vs2015.css">
 {% endif %}
 

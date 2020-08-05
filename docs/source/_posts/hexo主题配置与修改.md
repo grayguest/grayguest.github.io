@@ -47,7 +47,7 @@ type: "categories"
 comments: false
 ---
 ```
-2. 生成标签页面
+2. 生成标签页面g
 ```shell
 hexo new page tags
 ```
