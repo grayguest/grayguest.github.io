@@ -8,6 +8,7 @@
     {% set cid = theme.gitalk.client_id %}
     {% set cs = theme.gitalk.client_secret %}
     {% set admin = theme.gitalk.admin %}
+    {% set cim = theme.gitalk.createIssueManually %}
     {% set dfm = theme.gitalk.distractionFreeMode %}
 
     <div id="gitalk-container"></div>
@@ -20,6 +21,7 @@
             owner: '{{owner}}',
             admin: '{{admin}}',
             id: location.pathname,      // Ensure uniqueness and length less than 50
+            createIssueManually: '{{cim}}',
             distractionFreeMode: '{{dfm}}'  // Facebook-like distraction free mode
         })
 
