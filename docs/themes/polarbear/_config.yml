@@ -38,11 +38,11 @@ archive_generator:
 widget:
   Tags: true
   Categories: true
-  Custom: false
+  Custom: true
   Friends: true
 
 widget_custom:
-    title: 关于博主
+    title: 日常
     content: <a href="https://github.com/grayguest"><img src="/svg/github.svg" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://weibo.com/hansxx"><img src="/svg/weibo.svg" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://www.zhihu.com/people/xiaopo"><img src="/svg/zhihu-circle-fill.svg" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://space.bilibili.com/157700884"><img src="/svg/billbill.svg" style="width:23px; hegiht:23px" /></a>
 
 friend_list:
