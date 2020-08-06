@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xiaopo.org/tags/index.html</loc>
+    
+    <lastmod>2020-08-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xiaopo.org/posts/13920.html</loc>
     
     <lastmod>2020-08-06</lastmod>
@@ -38,13 +45,6 @@
   
   <url>
     <loc>https://xiaopo.org/categories/index.html</loc>
-    
-    <lastmod>2020-08-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xiaopo.org/tags/index.html</loc>
     
     <lastmod>2020-08-06</lastmod>
     
