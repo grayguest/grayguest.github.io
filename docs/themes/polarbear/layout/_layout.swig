@@ -13,7 +13,7 @@
       <div id="content">
         {% block content %}{% endblock %}
       </div>
-      {% if page.comments and not is_home() %}
+      {% if page.comments and is_post() %}
         {% include '_script/comments.swig' %}
       {% endif %}
 

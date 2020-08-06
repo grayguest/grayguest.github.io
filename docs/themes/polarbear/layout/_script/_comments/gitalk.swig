@@ -1,4 +1,4 @@
-{% if theme.gitalk.enable %}
+{% if page.comments && theme.gitalk.enable %}
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
