@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://xiaopo.org/posts/24581dd4.html</loc>
-    <lastmod>2020-08-06</lastmod>
-  </url>
-  <url>
-    <loc>https://xiaopo.org/posts/eb21dee.html</loc>
-    <lastmod>2020-08-06</lastmod>
-  </url>
-  <url>
     <loc>https://xiaopo.org/posts/13920.html</loc>
     <lastmod>2020-08-06</lastmod>
   </url>
   <url>
+    <loc>https://xiaopo.org/posts/24581dd4.html</loc>
+    <lastmod>2020-08-06</lastmod>
+  </url>
+  <url>
     <loc>https://xiaopo.org/posts/af6e5ddd.html</loc>
+    <lastmod>2020-08-06</lastmod>
+  </url>
+  <url>
+    <loc>https://xiaopo.org/posts/eb21dee.html</loc>
     <lastmod>2020-08-06</lastmod>
   </url>
 </urlset> 
