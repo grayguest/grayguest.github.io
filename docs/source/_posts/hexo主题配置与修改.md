@@ -247,6 +247,9 @@ donate:
 ## TODO
 - 读hexo主题相关文档细节，更好的自定义主题。
 
+## 后记
+后来把主题换了～
+
 ## 参考链接
 
 - https://dustyposa.github.io/posts/e575718e/#%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98
