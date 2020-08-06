@@ -6,7 +6,7 @@
 since: 2020
 
 # Custom your favicon.ico in `site/source`
-favicon: /favicon_io/favicon.ico
+favicon: /favicon/favicon.ico
 
 # Set feed link (false | default | your feed link)
 # false: disable
@@ -38,12 +38,12 @@ archive_generator:
 widget:
   Tags: true
   Categories: true
-  Custom: false
+  Custom: true
   Friends: true
 
 widget_custom:
-  title: Slogan
-  content: <p>Because we can</p>
+    title: 关于博主
+    content: <a href="https://github.com/grayguest"><img src="/svg/github.svg" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://weibo.com/hansxx"><img src="/svg/weibo.svg" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://www.zhihu.com/people/xiaopo"><img src="/svg/zhihu-circle-fill.svg" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://space.bilibili.com/157700884"><img src="/svg/billbill.svg" style="width:23px; hegiht:23px" /></a>
 
 friend_list:
   爱黑武: https://bbs.ihei5.com
@@ -78,8 +78,8 @@ gitment:
   enable: false # gitment评论系统开关
   owner: grayguest # GitHub用户名
   repo: grayguest.github.io # 存储评论数据的GitHub仓库的仓库名
-  client_id: ca4ae20760cf27ad5c6c # OAuth Application的Client ID
-  client_secret: 671788fb8d6aed08906b70340a8ba3088ec03f39 # OAuth Application的Client Secret
+  client_id: 84cea9ea417cfc735881 # OAuth Application的Client ID
+  client_secret: 392b68089a1739b052eb2aebfbc9512813961a6a # OAuth Application的Client Secret
   lazy: false # 评论懒加载开关
 
 # Gitalk
@@ -88,10 +88,12 @@ gitalk:
   enable: true
   owner: grayguest # GitHub用户名
   repo: grayguest.github.io # 存储评论数据的GitHub仓库的仓库名
-  client_id: ca4ae20760cf27ad5c6c # OAuth Application的Client ID
-  client_secret: 671788fb8d6aed08906b70340a8ba3088ec03f39 # OAuth Application的Client Secret
+  client_id: 84cea9ea417cfc735881 # OAuth Application的Client ID
+  client_secret: 392b68089a1739b052eb2aebfbc9512813961a6a # OAuth Application的Client Secret
   admin: ['grayguest']
+  createIssueManually: true
   distractionFreeMode: false
+
 # ===========================================
 # Version
 # ===========================================

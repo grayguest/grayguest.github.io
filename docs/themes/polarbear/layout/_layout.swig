@@ -16,6 +16,7 @@
       {% if page.comments and not is_home() %}
         {% include '_script/comments.swig' %}
       {% endif %}
+
       <footer id="colophon">
         {%- include '_partial/footer.swig' %}
       </footer>
@@ -24,6 +25,7 @@
         <i class="iconfont icon-up"></i>
       </div>
     </div>
+
     {% include '_script/libs.swig' %}
     {% include '_script/theme.swig' %}
   </body>

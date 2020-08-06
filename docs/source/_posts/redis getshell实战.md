@@ -20,7 +20,7 @@ ssrf会造成内网漫游，redis作为一种内网常用的中间件易受到�
 
 在Windows 系统中有一个特殊的目录叫自启动目录，在这个目录下的文件在开机的时候都会被运行。
 
-```vbscript
+```text
 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\redis_rce.hta
 ```
 

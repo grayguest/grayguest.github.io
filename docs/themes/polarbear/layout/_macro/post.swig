@@ -32,7 +32,7 @@
           {% else %}
             {% include "../_partial/toc.swig" %}
             <div class="post-content">
-                {{ post.content }}
+            {{ post.content }}
             </div>
           {% endif %}
 

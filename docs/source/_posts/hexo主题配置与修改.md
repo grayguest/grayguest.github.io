@@ -10,6 +10,7 @@ date: 2020-05-21 22:47:09
 <!-- more -->
 
 ## 配置与修改
+
 ### 选择语言包
 修改hexo中的\_config.yml文件
 ```
@@ -24,9 +25,13 @@ archive_b: "归档: %s"
 ### 编辑首页
 编辑主题中的\_config.yml文件，而非hexo中的\_config.yml文件
 1. 修改”存档“为”归档“
+
 2. 注释菜单中”RSS“
+
 3. 修改links:
+
 4. 增加以下两个widgets
+
 ```
 - category
 - tag
@@ -47,7 +52,7 @@ type: "categories"
 comments: false
 ---
 ```
-2. 生成标签页面g
+2. 生成标签页面
 ```shell
 hexo new page tags
 ```
