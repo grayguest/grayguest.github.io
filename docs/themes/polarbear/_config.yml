@@ -88,6 +88,7 @@ gitalk:
   enable: true
   owner: grayguest # GitHub用户名
   repo: grayguest.github.io # 存储评论数据的GitHub仓库的仓库名
+  id: location.pathname
   client_id: 84cea9ea417cfc735881 # OAuth Application的Client ID
   client_secret: 392b68089a1739b052eb2aebfbc9512813961a6a # OAuth Application的Client Secret
   admin: ['grayguest']
