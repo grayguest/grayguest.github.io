@@ -38,7 +38,7 @@ archive_generator:
 widget:
   Tags: true
   Categories: true
-  Custom: true
+  Custom: false
   Friends: true
 
 widget_custom:
