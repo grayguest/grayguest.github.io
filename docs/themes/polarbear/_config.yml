@@ -43,7 +43,7 @@ widget:
 
 widget_custom:
     title: 日常
-    content: <a href="https://github.com/grayguest"><img src="/img/github.png" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://weibo.com/hansxx"><img src="/img/weibo.png" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://www.zhihu.com/people/xiaopo"><img src="/img/zhihu-circle-fill.png" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://space.bilibili.com/157700884"><img src="/img/bilibili.png" style="width:23px; hegiht:23px" /></a>
+    content: <a href="https://github.com/grayguest"><img src="/img/github.png" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://weibo.com/hansxx"><img src="/img/weibo.png" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://www.zhihu.com/people/xiaopo"><img src="/img/zhihu-circle-fill.png" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://space.bilibili.com/157700884"><img src="/img/bilibili.png" style="width:23px; hegiht:23px" /></a> &nbsp;&nbsp;&nbsp; <a href="https://www.douban.com/people/hanshasx/"><img src="/img/douban.png" style="width:23px; hegiht:23px" /></a>
 
 friend_list:
   爱黑武: https://bbs.ihei5.com

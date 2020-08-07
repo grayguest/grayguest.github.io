@@ -26,7 +26,7 @@ date: 2020-05-21 19:37:58
   - Software：C/VC++(MFC)
   - Database：MySQL/Redis/MongoDB
 - 软实力
-  - 证书：CET-6、CISSP备考中
+  - 证书：CET-6
 
 ## 学业工作
 - 贝壳找房北京科技有限公司
