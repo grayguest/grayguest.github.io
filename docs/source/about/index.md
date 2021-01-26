@@ -22,13 +22,14 @@ date: 2020-05-21 19:37:58
   - 熟悉Web安全漏洞，SQLI、XSS、CSRF、SSRF、XXE、LFI、RFI、逻辑漏洞、PHP反序列化等
   - 熟练使用Web安全测试工具，如Nmap/BurpSuite/Sqlmap/Awvs/W3af等
 - 开发能力
-  - Web：PHP(Laravel)/Python(Flask)/ES5(JQuery)，2年Python开发经验。
+  - Web：PHP(Laravel)/Python(Flask/FastAPI)/ES5(JQuery)
   - Software：C/VC++(MFC)
-  - Database：MySQL/Redis/MongoDB
+  - Database：MySQL/PostgreSQL/Redis/MongoDB
 - 软实力
   - 证书：CET-6
 
 ## 学业工作
+- 奇安信安全技术中心
 - 贝壳找房北京科技有限公司
 - 融七牛信息技术有限公司
 - 东北大学
